@@ -205,5 +205,6 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 
 ```
-Your thoughts...
+It is often difficult to recognize the subtle values embedded in these systems, and many people follow the rules without realizing that they are influenced by the thoughts and values of others. What seems like a neutral or purely technical process is often shaped by social norms, cultural assumptions, and political priorities. These systems quietly decide who belongs, who is trusted, and who gets access to opportunities or services. Ordinary people usually have no control over how these databases are designed, yet their lives are deeply affected by them. This makes me realize how important it is to question and understand the invisible structures behind technology, rather than simply accepting them as objective or fair.
+
 ```
