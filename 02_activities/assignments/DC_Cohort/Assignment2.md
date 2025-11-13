@@ -53,9 +53,53 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
-```
-Your answer...
-```
+*** first model - type1: 
+
+The customer’s address information is stored directly in the customer table or in a simple one-to-one CUSTOMER_ADDRESS table.
+
+When the address changes, the old data is overwritten and only the current address is retained.
+
+Structure:
+
+CUSTOMER_ADDRESS
+----------------
+customer_id (PK, FK → customer)
+address_line1
+address_line2
+city
+state
+postal_code
+country
+last_updated
+
+*** second model - type 2:
+
+Each address change creates a new record in a CUSTOMER_ADDRESS_HISTORY table.
+
+Older addresses are kept with start and end dates.
+
+this model is used in systems that require historical accuracy (e.g., billing, legal, analytics).
+
+in this model, we can search for the address of each customer in an exact date.
+
+When customer change the address, we set "effective_end_date"=system_current_date and "is_current" = false, 
+then we add the new address with "effective_start_date" =system_current_date, and "effective_end_date" = null and "is_current" = true.
+
+Structure:
+
+CUSTOMER_ADDRESS_HISTORY
+------------------------
+address_sk (PK)
+customer_id (FK → customer)
+address_line1
+address_line2
+city
+state
+postal_code
+country
+effective_start_date
+effective_end_date (nullable)
+is_current (true/false)
 
 ***
 
@@ -183,5 +227,6 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+The article highlights several ethical concerns that go far beyond technology itself. Although we often talk about AI as something objective or automatic, the story shows that every layer of these systems is built on human choices, human biases, and in many cases, poorly paid human labor. The images used to train neural networks were labeled by thousands of workers whose decisions directly shaped how the algorithms “see” the world, and the categories they used were created decades earlier by linguists with their own assumptions about language and identity. As a result, problems like mislabeling, harmful stereotypes, and biased classifications are not accidents. they are inherited from the data’s human origins. The article essentially argues that if AI makes unfair or offensive decisions today, it’s because the foundations of these systems were never neutral to begin with.
+
 ```
